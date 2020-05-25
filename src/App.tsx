@@ -8,6 +8,6 @@ const App = () => {
       <SearchPage />
     </div>
   );
-}
+};
 
 export default App;

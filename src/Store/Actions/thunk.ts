@@ -55,4 +55,3 @@ export const searchById = (param: { id: number, directories: string[], token: st
     dispatch(actions.loading(false));
   }
 };
-

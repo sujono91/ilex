@@ -48,13 +48,13 @@ export interface SearchDataById {
     from1: string;
     to1: string;
   }>;
-  openingHoursStatus: string,
+  openingHoursStatus: string;
   categories: Array<{
     id: number;
     name: string;
     fullName: string;
     selectable: boolean;
-  }>,
+  }>;
   categoriesStatus: string;
   photos: string[];
   photosStatus: string;
