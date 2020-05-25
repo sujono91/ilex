@@ -16,6 +16,7 @@
     "typescript": "~3.7.5"
   },
   "devDependencies": {
+    "husky": "~1.2.0",
     "tslint": "~5.12.1",
     "tslint-react": "~3.6.0"
   },
@@ -40,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
   }
 }
