@@ -4,12 +4,15 @@ import useThunkDispatch from 'Shared/Hooks';
 import SearchBar from './Components/SearchBar';
 import { SearchDataParam } from 'Model';
 import { search, searchById } from 'Store/Actions/thunk';
-import { searchData } from 'Store/Selectors';
+import { searchData, directoryList, loading } from 'Store/Selectors';
 import directories from 'Data/countries_and_directories.json';
+import DirectoryTable from './Components/DirectoryTable';
 
 const SearchPage = () => {
   const dispatch = useThunkDispatch();
   const searchResult = useSelector(searchData);
+  const isLoading = useSelector(loading);
+  const list = useSelector(directoryList);
 
   const searchDirectories = useCallback(
     async (param: SearchDataParam) => {
@@ -34,7 +37,9 @@ const SearchPage = () => {
       <br />
       <code><h2>ONLINE PRESENCE CHECK</h2></code>
       <br />
-      <SearchBar onSubmit={searchDirectories}/>
+      <SearchBar onSubmit={searchDirectories} isLoading={isLoading} />
+      <br />
+      {list.length > 0 && <DirectoryTable list={list} />}
     </>
   );
 };

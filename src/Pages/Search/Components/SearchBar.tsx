@@ -7,9 +7,10 @@ import DirectoryList from './DirectoryList';
 
 export interface Props {
   onSubmit: (param: SearchDataParam) => void;
+  isLoading: boolean;
 }
 
-const SearchBar: FC<Props> = ({ onSubmit }) => {
+const SearchBar: FC<Props> = ({ onSubmit, isLoading }) => {
   const [country, setCountry] = useState<string>('AF');
   const [name, setName] = useState<string>('');
   const [street, setStreet] = useState<string>('');
@@ -73,7 +74,7 @@ const SearchBar: FC<Props> = ({ onSubmit }) => {
         street,
         zip
         })}>
-          Check Now!
+          {isLoading ? 'Searching...' : 'Check Now'}
       </StyledButton>
     </StyledForm>
     <br />

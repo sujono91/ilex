@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from 'Store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import './IconLibrary';
 import App from './App';
 
 ReactDOM.render(

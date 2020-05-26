@@ -18,7 +18,7 @@ export interface SearchData {
 }
 
 export interface SearchDataById {
-  listingId: string;
+  listingId: string | null;
   listingUrl: string;
   syncStatus: string;
   claimStatus: string;
