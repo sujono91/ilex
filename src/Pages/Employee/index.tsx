@@ -78,7 +78,7 @@ const SearchPage = () => {
   const openConfirmationModal = (employee: Employee) => {
     setSelectedEmployee(employee);
     setShowConfirm(true);
-  }
+  };
 
   const onCloseModal = () => {
     setShowForm(false);
