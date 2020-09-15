@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
-import SearchPage from 'Pages/Search';
+import EmployeePage from 'Pages/Employee';
 
 const App = () => {
   return (
     <div className="App">
-      <SearchPage />
+      <EmployeePage />
     </div>
   );
 };

@@ -1,13 +1,9 @@
 import { combineReducers } from 'redux';
 
-import searchReducer from './search.reducer';
-import loadingReducer from './loading.reducer';
-import searchByIdReducer from './searchById.reducer';
+import employeeReducer from './employee.reducer';
 
 export const rootReducer = combineReducers({
-  loading: loadingReducer,
-  search: searchReducer,
-  searchById: searchByIdReducer
+  employee: employeeReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

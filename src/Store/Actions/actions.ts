@@ -1,18 +1,28 @@
-import { createStandardAction as action, createAsyncAction as asyncAction } from 'typesafe-actions';
-import { SearchDataResponse, SearchDataById } from 'Model';
+import { createAsyncAction as asyncAction } from 'typesafe-actions';
+import { Employee } from 'Model';
 
-const search = asyncAction(
-  'SEARCH/GET_DATA',
-  'SEARCH/GET_DATA_SUCCESS',
-  'SEARCH/GET_DATA_FAILED'
-)<void, SearchDataResponse, void>();
+const fetchEmployee = asyncAction(
+  'employees/FETCH',
+  'employees/FETCH_SUCCESS',
+  'employees/FETCH_FAILED',
+)<void, Employee[], string>();
 
-const searchById = asyncAction(
-  'SEARCH_BY_ID/GET_DATA',
-  'SEARCH_BY_ID/GET_DATA_SUCCESS',
-  'SEARCH_BY_ID/GET_DATA_FAILED',
-)<void, SearchDataById[], void>();
+const addEmployee = asyncAction(
+  'employees/ADD',
+  'employees/ADD_SUCCESS',
+  'employees/ADD_FAILED'
+)<void, Employee, string>();
 
-export const loading = action('loading/GET_DATA')<boolean>();
+const updateEmployee = asyncAction(
+  'employees/UPDATE',
+  'employees/UPDATE_SUCCESS',
+  'employees/UPDATE_FAILED'
+)<void, Employee, string>();
 
-export default { search, searchById, loading };
+const removeEmployee = asyncAction(
+  'employees/REMOVE',
+  'employees/REMOVE_SUCCESS',
+  'employees/REMOVE_FAILED'
+)<void, Employee, string>();
+
+export default { fetchEmployee, addEmployee, updateEmployee, removeEmployee };

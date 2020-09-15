@@ -1,57 +1,84 @@
 import { Dispatch } from 'redux';
-import qs from 'qs';
-
+import { v4 } from 'uuid';
 import actions from 'Store/Actions';
-import Axios from 'Core/Axios';
-import { SearchDataResponse, SearchDataByIdResponse } from 'Model';
-import ENDPOINT from 'Core/Endpoint';
+import { mockEmployees } from 'Mock';
+import { Employee, EmployeeForm } from 'Model';
 
-export interface QueryParam {
-  name: string;
-  street: string;
-  zip: string;
-  country?: string;
-}
+const PROMISE_DELAY = 1000;
 
-export const search = (param: QueryParam) => async (
+export const fetchEmployee = () => async (
   dispatch: Dispatch
 ) => {
-  dispatch(actions.search.request());
-  dispatch(actions.loading(true));
+  dispatch(actions.fetchEmployee.request());
 
   try {
-    const response = await Axios.post<SearchDataResponse>(`${ENDPOINT.search}?${qs.stringify(param)}`);
-    dispatch(actions.search.success(response.data));
+    const response: { data: Employee[] } = await new Promise(
+      (resolve) => setTimeout(() => resolve({
+        data: mockEmployees
+      }), PROMISE_DELAY)
+    );
+    dispatch(actions.fetchEmployee.success(response.data));
   } catch {
-    dispatch(actions.search.failure());
-  } finally {
-    dispatch(actions.loading(false));
+    dispatch(actions.fetchEmployee.failure('Failed to fetch list of employee'));
   }
 };
 
-export const searchById = (param: { id: number, directories: string[], token: string }) => async (
+export const addEmployee = (employee: EmployeeForm) => async (
   dispatch: Dispatch
 ) => {
-  dispatch(actions.searchById.request());
-  dispatch(actions.loading(true));
+  dispatch(actions.addEmployee.request());
 
   try {
-    const response = await Promise.all(
-      param.directories.map((directory: string) => {
-        return Axios.get<SearchDataByIdResponse>(`${ENDPOINT.searchById(param.id)}?${qs.stringify({
-          directory,
-          public_key: process.env.REACT_APP_PUBLIC_KEY,
-          token: param.token
-        })}`);
-      })
+    const response: { data: Employee } = await new Promise(
+      (resolve) => setTimeout(() => resolve({
+        data: {
+          ...employee,
+          id: v4()
+        }
+      }), PROMISE_DELAY)
     );
-
-    const result = response.map((item) => item.data.response.result);
-
-    dispatch(actions.searchById.success(result));
+    dispatch(actions.addEmployee.success(response.data));
   } catch {
-    dispatch(actions.searchById.failure());
-  } finally {
-    dispatch(actions.loading(false));
+    dispatch(actions.fetchEmployee.failure('Failed to add new employee'));
+  }
+};
+
+export const updateEmployee = (employee: EmployeeForm) => async (
+  dispatch: Dispatch
+) => {
+  dispatch(actions.updateEmployee.request());
+
+  try {
+    const response: { data: Employee } = await new Promise(
+      (resolve) => setTimeout(() => resolve({
+        data: {
+          id: employee.id!,
+          ...employee
+        }
+      }), PROMISE_DELAY)
+    );
+    dispatch(actions.updateEmployee.success(response.data));
+  } catch {
+    dispatch(actions.updateEmployee.failure('Failed to update employee'));
+  }
+};
+
+export const removeEmployee = (employee: EmployeeForm) => async (
+  dispatch: Dispatch
+) => {
+  dispatch(actions.removeEmployee.request());
+
+  try {
+    const response: { data: Employee } = await new Promise(
+      (resolve) => setTimeout(() => resolve({
+        data: {
+          id: employee.id!,
+          ...employee
+        }
+      }), PROMISE_DELAY)
+    );
+    dispatch(actions.removeEmployee.success(response.data));
+  } catch {
+    dispatch(actions.removeEmployee.failure('Failed to remove employee'));
   }
 };

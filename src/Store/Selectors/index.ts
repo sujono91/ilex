@@ -1,21 +1,7 @@
-import { createSelector } from 'reselect';
 import { RootState } from 'Store/Reducers';
-import { SearchDataById } from 'Model';
 
-export const loading = (state: RootState) => state.loading.loading;
+export const isLoading = (state: RootState) => state.employee.isLoading;
 
-export const searchData = (state: RootState) => state.search.data;
+export const employeeList = (state: RootState) => state.employee.data;
 
-export const searchDataById = (state: RootState) => state.searchById.data;
-
-export const directoryList = createSelector(
-  searchDataById,
-  (rows: SearchDataById[]) => {
-    return rows.map(({listingId, directoryType}) => {
-      return {
-        directoryType,
-        status: !!listingId
-      };
-    });
-  }
-);
+export const error = (state: RootState) => state.employee.error;
