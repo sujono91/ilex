@@ -63,7 +63,8 @@ export default (state = defaultState, action: Action): State => {
 
       return {
         ...state,
-        data: state.data.slice(0, index).concat(state.data.slice(index + 1, state.data.length))
+        data: state.data.slice(0, index).concat(state.data.slice(index + 1, state.data.length)),
+        isLoading: false
       };
     }
 

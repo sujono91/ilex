@@ -1,8 +1,10 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit } from '@fortawesome/free-regular-svg-icons/faEdit';
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons/faTrashAlt';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons/faPencilAlt';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner';
 
 library.add(
-  faEdit,
-  faTrashAlt
+  faPencilAlt,
+  faSpinner,
+  faTrash
 );

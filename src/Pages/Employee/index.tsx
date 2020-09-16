@@ -61,6 +61,7 @@ const SearchPage = () => {
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee>();
   const employeeList = useSelector(selector.employeeList);
+  const isLoading = useSelector(selector.isLoading);
   const [initialValues, setInitialValues] = useState<EmployeeForm>(defaultValue);
 
   const openAddModal = () => {
@@ -109,9 +110,9 @@ const SearchPage = () => {
     phone: employee.phone,
     actions: (
       <>
-        <StyledFontAwesomeIcon icon={['far', 'edit']} onClick={() => openEditModal(employee)} />
+        <StyledFontAwesomeIcon icon={['fas', 'pencil-alt']} onClick={() => openEditModal(employee)} />
         &nbsp;
-        <StyledFontAwesomeIcon icon={['far', 'trash-alt']} onClick={() => openConfirmationModal(employee)} />
+        <StyledFontAwesomeIcon icon={['fas', 'trash']} onClick={() => openConfirmationModal(employee)} />
       </>
     )
   })), [employeeList]);
@@ -129,6 +130,7 @@ const SearchPage = () => {
       <DataTable
         heads={heads}
         rows={employees}
+        isLoading={isLoading}
       />
       <Formik
         enableReinitialize

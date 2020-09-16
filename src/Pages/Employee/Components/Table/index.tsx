@@ -1,12 +1,14 @@
 import React, { FC, memo } from 'react';
 import { Table } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
+  isLoading?: boolean;
   heads: string[];
   rows: Array<{[key: string]: string | React.ReactNode}>;
 }
 
-const DataTable: FC<Props> = ({ heads, rows }) => {
+const DataTable: FC<Props> = ({ isLoading, heads, rows }) => {
   return (
     <Table>
       <thead>
@@ -17,7 +19,12 @@ const DataTable: FC<Props> = ({ heads, rows }) => {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row, index) => {
+        {isLoading && (
+          <td colSpan={heads.length} style={{ textAlign: 'center' }}>
+            <FontAwesomeIcon icon={['fas', 'spinner']} spin size="2x" />
+          </td>
+        )}
+        {!isLoading && rows.map((row, index) => {
           return (
             <tr key={index}>
               {Object.keys(row).map((key) => (
