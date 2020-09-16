@@ -14,7 +14,8 @@ module.exports = {
     collectCoverage: false,
     collectCoverageFrom: [
       'src/**/*.{js,ts,tsx}',
-      '!src/Core/IconLibrary.js',
+      '!src/IconLibrary.ts',
+      '!src/index.tsx',
       '!src/typings.d.ts'
     ],
     transform: {
@@ -23,6 +24,7 @@ module.exports = {
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
     testPathIgnorePatterns: ['/__tests__/.*\\.common\\.'],
     setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    modulePaths: ["<rootDir>/src/"]
   };
   

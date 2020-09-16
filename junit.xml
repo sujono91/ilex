@@ -1,0 +1,42 @@
+<testsuites name="jest tests" tests="16" failures="0" time="7.208">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-09-16T17:00:59" time="1.537" tests="1">
+    <testcase classname=" should set the root reducer" name=" should set the root reducer" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Employee Reducer Spec" errors="0" failures="0" skipped="0" timestamp="2020-09-16T17:00:59" time="1.56" tests="7">
+    <testcase classname="Employee Reducer Spec should return default state" name="Employee Reducer Spec should return default state" time="0.008">
+    </testcase>
+    <testcase classname="Employee Reducer Spec should handle fetch request" name="Employee Reducer Spec should handle fetch request" time="0">
+    </testcase>
+    <testcase classname="Employee Reducer Spec should handle fail request" name="Employee Reducer Spec should handle fail request" time="0.001">
+    </testcase>
+    <testcase classname="Employee Reducer Spec should fetch employee successfully" name="Employee Reducer Spec should fetch employee successfully" time="0">
+    </testcase>
+    <testcase classname="Employee Reducer Spec should add employee successfully" name="Employee Reducer Spec should add employee successfully" time="0.001">
+    </testcase>
+    <testcase classname="Employee Reducer Spec should update employee successfully" name="Employee Reducer Spec should update employee successfully" time="0">
+    </testcase>
+    <testcase classname="Employee Reducer Spec should remove employee successfully" name="Employee Reducer Spec should remove employee successfully" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Thunk Spec" errors="0" failures="0" skipped="0" timestamp="2020-09-16T17:00:59" time="3.618" tests="4">
+    <testcase classname="Thunk Spec should handle fetch employee" name="Thunk Spec should handle fetch employee" time="0.506">
+    </testcase>
+    <testcase classname="Thunk Spec should handle add employee" name="Thunk Spec should handle add employee" time="0.505">
+    </testcase>
+    <testcase classname="Thunk Spec should handle update employee" name="Thunk Spec should handle update employee" time="0.501">
+    </testcase>
+    <testcase classname="Thunk Spec should handle remove employee" name="Thunk Spec should handle remove employee" time="0.502">
+    </testcase>
+  </testsuite>
+  <testsuite name="App" errors="0" failures="0" skipped="0" timestamp="2020-09-16T17:00:59" time="5.383" tests="4">
+    <testcase classname="App should render app successfully" name="App should render app successfully" time="0.047">
+    </testcase>
+    <testcase classname="App should open add modal" name="App should open add modal" time="0.397">
+    </testcase>
+    <testcase classname="App should open edit modal" name="App should open edit modal" time="0.035">
+    </testcase>
+    <testcase classname="App should open remove modal" name="App should open remove modal" time="0.353">
+    </testcase>
+  </testsuite>
+</testsuites>

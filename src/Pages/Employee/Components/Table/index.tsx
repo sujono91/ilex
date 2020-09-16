@@ -20,9 +20,11 @@ const DataTable: FC<Props> = ({ isLoading, heads, rows }) => {
       </thead>
       <tbody>
         {isLoading && (
-          <td colSpan={heads.length} style={{ textAlign: 'center' }}>
-            <FontAwesomeIcon icon={['fas', 'spinner']} spin size="2x" />
-          </td>
+          <tr>
+            <td colSpan={heads.length} style={{ textAlign: 'center' }}>
+              <FontAwesomeIcon icon={['fas', 'spinner']} spin size="2x" />
+            </td>
+          </tr>
         )}
         {!isLoading && rows.map((row, index) => {
           return (

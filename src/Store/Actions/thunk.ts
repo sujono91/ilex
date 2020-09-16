@@ -4,7 +4,7 @@ import actions from 'Store/Actions';
 import { mockEmployees } from 'Mock';
 import { Employee, EmployeeForm } from 'Model';
 
-const PROMISE_DELAY = 1000;
+const PROMISE_DELAY = 500;
 
 export const fetchEmployee = () => async (
   dispatch: Dispatch
@@ -17,6 +17,7 @@ export const fetchEmployee = () => async (
         data: mockEmployees
       }), PROMISE_DELAY)
     );
+
     dispatch(actions.fetchEmployee.success(response.data));
   } catch {
     dispatch(actions.fetchEmployee.failure('Failed to fetch list of employee'));

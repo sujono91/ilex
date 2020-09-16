@@ -10,7 +10,11 @@ interface Props {
 const ActionModal: FC<Props> = ({ isOpen, title, children }) => {
   return (
     <Modal isOpen={isOpen}>
-      <ModalHeader>{title}</ModalHeader>
+      <ModalHeader>
+        <div data-testid="actionModal">
+          {title}
+        </div>
+      </ModalHeader>
       {children}
     </Modal>
   );

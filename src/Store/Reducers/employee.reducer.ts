@@ -1,5 +1,5 @@
 import { ActionType, getType } from 'typesafe-actions';
-import actions from 'Store/Actions';
+import * as actions from 'Store/Actions/actions';
 import { Employee } from 'Model';
 
 type Action = ActionType<typeof actions>;
@@ -10,7 +10,7 @@ interface State {
   isLoading: boolean;
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   data: [],
   error: null,
   isLoading: false

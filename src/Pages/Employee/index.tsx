@@ -40,6 +40,7 @@ const validationSchema = Yup.object<EmployeeForm>().shape({
   email: Yup.lazy(() =>
     Yup.string()
       .nullable(true)
+      .matches(/\S+@\S+\.\S+/, 'Invalid email format')
       .when('phone', {
         is: (phone) => !phone,
         then: Yup.string().required('Email is a required field')
@@ -48,6 +49,7 @@ const validationSchema = Yup.object<EmployeeForm>().shape({
   phone: Yup.lazy(() =>
     Yup.string()
       .nullable(true)
+      .matches(/^[0-9]*$/, 'Only number is allowed')
       .when('email', {
         is: (email) => !email,
         then: Yup.string().required('Phone is a required field')
@@ -110,9 +112,13 @@ const SearchPage = () => {
     phone: employee.phone,
     actions: (
       <>
-        <StyledFontAwesomeIcon icon={['fas', 'pencil-alt']} onClick={() => openEditModal(employee)} />
+        <span data-testid="edit" onClick={() => openEditModal(employee)}>
+          <StyledFontAwesomeIcon icon={['fas', 'pencil-alt']} />
+        </span>
         &nbsp;
-        <StyledFontAwesomeIcon icon={['fas', 'trash']} onClick={() => openConfirmationModal(employee)} />
+        <span data-testid="remove" onClick={() => openConfirmationModal(employee)}>
+          <StyledFontAwesomeIcon icon={['fas', 'trash']} />
+        </span>
       </>
     )
   })), [employeeList]);

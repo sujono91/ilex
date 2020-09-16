@@ -4,7 +4,7 @@ import EmployeePage from 'Pages/Employee';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <EmployeePage />
     </div>
   );

@@ -16,7 +16,9 @@ const ConfirmationModal: FC<Props> = ({ children, isOpen, onCancel, onSubmit }) 
       isOpen={isOpen}
     >
       <ModalBody>
-        {children}
+        <div data-testid="confirmationModal">
+          {children}
+        </div>
       </ModalBody>
       <ModalFooter>
         <Button color="secondary" onClick={onCancel}>
